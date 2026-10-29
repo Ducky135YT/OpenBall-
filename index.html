@@ -2,82 +2,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101a35">
-<title>OpenBall OS — Sunset 1.0</title>
-<meta name="description" content="Discover OpenBall OS Sunset 1.0, a modern Linux distribution with a beautiful Aero-inspired desktop.">
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#fff;background:#10172d}
-a{color:inherit;text-decoration:none}
-.hero{min-height:680px;padding:26px max(6%,calc((100% - 1160px)/2));background:linear-gradient(180deg,rgba(12,22,51,.18),#10172d 100%),linear-gradient(125deg,#163d75,#b65e79 52%,#f5a65f);position:relative;overflow:hidden}
-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 22px;border:1px solid #ffffff50;border-radius:20px;background:#ffffff1b;backdrop-filter:blur(20px)}
-.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:21px}
-.orb{width:39px;height:39px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#d8f5ff,#4ba7ff 35%,#1645a6 72%,#07163b);box-shadow:inset -5px -5px 12px #07163b80,0 0 20px #75baff70}
-nav a{font-size:14px;color:#ffffffdc}
-.links{display:flex;gap:22px;flex-wrap:wrap}
-.hero-content{max-width:800px;margin:110px auto 100px;text-align:center}
-.eyebrow{display:inline-block;padding:9px 15px;border:1px solid #ffffff55;border-radius:30px;background:#ffffff1c;font-size:13px;letter-spacing:1px}
-h1{font-size:clamp(48px,8vw,88px);letter-spacing:-4px;line-height:1.02;margin:24px 0}
-h1 span{color:#ffcfaa}
-.hero p{font-size:18px;line-height:1.8;color:#ffffffdc;max-width:610px;margin:0 auto 30px}
-.btn{display:inline-block;padding:15px 23px;border-radius:13px;background:#fff;color:#17264a;font-weight:750;margin:5px}
-.btn.secondary{background:#ffffff20;color:white;border:1px solid #ffffff60}
-main{max-width:1100px;margin:auto;padding:75px 24px}
-.section-title{text-align:center;font-size:36px;letter-spacing:-1px}
-.intro{text-align:center;color:#aebbd7;line-height:1.8;max-width:650px;margin:0 auto 36px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{padding:27px;border:1px solid #ffffff1c;border-radius:22px;background:linear-gradient(145deg,#ffffff12,#ffffff05);box-shadow:0 15px 40px #00000015}
-.card .emoji{font-size:28px}
-.card h3{margin:17px 0 10px}
-.card p{color:#aebbd7;line-height:1.7;font-size:14px}
-.download{margin-top:55px;padding:38px;border-radius:26px;border:1px solid #8ab9ff50;background:linear-gradient(120deg,#183d72,#252448);display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}
-.download h2{margin-top:0;font-size:29px}
-.download p{color:#c5d4f0;line-height:1.7}
-.tag{font-size:12px;color:#d8e9ff;border:1px solid #ffffff35;border-radius:20px;padding:7px 10px}
-footer{text-align:center;padding:30px 20px;color:#8e9bb7;border-top:1px solid #ffffff15;font-size:13px}
-@media(max-width:600px){.links{gap:12px}nav{padding:14px}.hero-content{margin:85px auto}h1{letter-spacing:-2px}.download{padding:25px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenBall OS — Sunset 1.0</title>
+  <meta name="description" content="Discover OpenBall OS Sunset 1.0, a Debian-based Linux operating system.">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #f7f9ff;
+      background: linear-gradient(135deg, #101a3b, #343d79 45%, #b55e9c 75%, #ffad83);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(13, 20, 48, 0.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.18);
+    }
+
+    nav {
+      max-width: 1150px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 21px;
+    }
+
+    /* Existing CSS logo placeholder — unchanged */
+    .orb {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 25%, #b8f1ff, #2588f4 45%, #143c9b 75%);
+      box-shadow: 0 0 18px rgba(75, 169, 255, .55);
+      border: 2px solid rgba(255,255,255,.7);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      color: #f4f5ff;
+      text-decoration: none;
+      padding: 10px 13px;
+      border-radius: 12px;
+      transition: background .2s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,.17);
+    }
+
+    main {
+      max-width: 1150px;
+      margin: auto;
+      padding: 35px 24px 65px;
+    }
+
+    .hero {
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .eyebrow {
+      color: #dce8ff;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 78px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #edf0ff;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 21px;
+      border-radius: 13px;
+      color: #18234b;
+      background: white;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #e4edff;
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.35);
+      color: white;
+    }
+
+    .window {
+      margin: 25px 0;
+      padding: clamp(24px, 5vw, 42px);
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 25px;
+      background: rgba(19, 27, 65, .48);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 18px 50px rgba(8, 12, 38, .15);
+      scroll-margin-top: 95px;
+    }
+
+    .window h2 {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .window > p {
+      color: #e3e8ff;
+      line-height: 1.8;
+      max-width: 800px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #e0e6ff;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 8px 12px;
+      border-radius: 20px;
+      background: rgba(255, 205, 143, .15);
+      border: 1px solid rgba(255, 220, 170, .35);
+      color: #ffe2b7;
+      font-size: 13px;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .spec {
+      padding: 17px;
+      background: rgba(255,255,255,.08);
+      border-radius: 14px;
+    }
+
+    .spec strong {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .spec span {
+      color: #e0e6ff;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #e1e6ff;
+      border-top: 1px solid rgba(255,255,255,.15);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        justify-content: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .nav-links a {
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 350px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<header class="hero">
-<nav>
-<a class="brand" href="#"><span class="orb"></span> OpenBall</a>
-<div class="links">
-<a href="#features">Features</a>
-<a href="#about">About</a>
-<a href="#download">Download</a>
-</div>
-</nav>
-<div class="hero-content">
-<span class="eyebrow">A NEW LINUX EXPERIENCE</span>
-<h1>Meet OpenBall<br><span>Sunset 1.0</span></h1>
-<p>A fresh desktop experience inspired by the beauty of sunset, the elegance of glass and the freedom of Linux.</p>
-<a class="btn" href="#about">Discover OpenBall ↗</a>
-<a class="btn secondary" href="#download">Explore the release</a>
-</div>
-</header>
-<main>
-<section id="about">
-<h2 class="section-title">Your desktop. Your world.</h2>
-<p class="intro">OpenBall OS is a community project in development, built on Debian with a vision for a polished, approachable and beautiful Linux desktop.</p>
-</section>
-<section id="features" class="grid">
-<article class="card"><div class="emoji">🌅</div><h3>Sunset design</h3><p>Warm sunset colors, smooth surfaces and a modern visual identity.</p></article>
-<article class="card"><div class="emoji">🪟</div><h3>Aero-inspired UI</h3><p>Translucent panels and elegant glass-inspired styling.</p></article>
-<article class="card"><div class="emoji">🐧</div><h3>Powered by Linux</h3><p>Built on Debian, with KDE Plasma planned for the desktop experience.</p></article>
-<article class="card"><div class="emoji">✨</div><h3>Made to evolve</h3><p>A growing project with a focus on usability, design and open technology.</p></article>
-</section>
-<section id="download" class="download">
-<div>
-<span class="tag">PROJECT STATUS: IN DEVELOPMENT</span>
-<h2>OpenBall Sunset 1.0</h2>
-<p>The website is an early preview. The installation image is not available yet.</p>
-</div>
-<a class="btn" href="https://github.com/">Visit GitHub ↗</a>
-</section>
-</main>
-<footer>© 2026 OpenBall OS · An independent community project · Built with Linux in mind</footer>
+  <header>
+    <nav>
+      <a class="brand" href="#home">
+        <span class="orb" aria-hidden="true"></span>
+        <span>OpenBall OS</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#explore">Explore</a>
+        <a href="#download">Download</a>
+        <a href="#release">Release</a>
+        <a href="#about">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="eyebrow">A new Linux experience</div>
+      <h1>OpenBall Sunset</h1>
+      <p>
+        A modern Linux operating system concept with a beautiful sunset
+        aesthetic, a familiar desktop, and an Aero-inspired glass design.
+      </p>
+      <div class="actions">
+        <a class="button" href="#download">Explore Download</a>
+        <a class="button secondary" href="#explore">Discover OpenBall</a>
+      </div>
+    </section>
+
+    <section class="window" id="explore">
+      <h2>Explore OpenBall</h2>
+      <p>Discover the ideas and technologies planned for OpenBall Sunset 1.0.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>🌅 Sunset Design</h3>
+          <p>A colorful sunset-inspired interface with translucent panels and a modern look.</p>
+        </article>
+
+        <article class="card">
+          <h3>🖥️ KDE Plasma</h3>
+          <p>A customizable desktop environment designed for everyday computer use.</p>
+        </article>
+
+        <article class="card">
+          <h3>📦 Everyday Apps</h3>
+          <p>Firefox, LibreOffice, VLC, Dolphin, and other useful applications are planned.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="window" id="download">
+      <h2>Download</h2>
+      <p>
+        OpenBall Sunset 1.0 is still in development. The installation ISO
+        is not available yet.
+      </p>
+      <span class="status">Download coming when the ISO is ready</span>
+    </section>
+
+    <section class="window" id="release">
+      <h2>Release</h2>
+      <p>Follow the planned first release of OpenBall OS.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>OpenBall Sunset 1.0</h3>
+          <p><strong>Base:</strong> Debian 13</p>
+          <p><strong>Desktop:</strong> KDE Plasma</p>
+          <p><strong>Architecture:</strong> 64-bit x86 (amd64)</p>
+          <p><strong>Status:</strong> In development</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="window" id="about">
+      <h2>About OpenBall</h2>
+      <p>
+        OpenBall OS is a planned Debian-based Linux distribution focused
+        on a welcoming desktop experience, useful software, and a distinctive
+        sunset-inspired visual style.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Our Goal</h3>
+          <p>Build a practical, attractive Linux system that is approachable for everyday users.</p>
+        </article>
+
+        <article class="card">
+          <h3>Project Status</h3>
+          <p>The system is being developed. Installation media and release details will be announced when ready.</p>
+        </article>
+      </div>
+
+      <div id="day-specs" style="margin-top: 32px; scroll-margin-top: 100px;">
+        <h2>Day Specs</h2>
+        <p>Planned system specifications for OpenBall Sunset 1.0.</p>
+
+        <div class="specs">
+          <div class="spec">
+            <strong>Operating System</strong>
+            <span>Debian 13 based</span>
+          </div>
+          <div class="spec">
+            <strong>Desktop Environment</strong>
+            <span>KDE Plasma</span>
+          </div>
+          <div class="spec">
+            <strong>Architecture</strong>
+            <span>AMD64 / x86_64</span>
+          </div>
+          <div class="spec">
+            <strong>Web Browser</strong>
+            <span>Firefox planned</span>
+          </div>
+          <div class="spec">
+            <strong>Office Suite</strong>
+            <span>LibreOffice planned</span>
+          </div>
+          <div class="spec">
+            <strong>Media Player</strong>
+            <span>VLC planned</span>
+          </div>
+          <div class="spec">
+            <strong>File Manager</strong>
+            <span>Dolphin planned</span>
+          </div>
+          <div class="spec">
+            <strong>Installation Image</strong>
+            <span>Target size under 4 GB; not yet available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 OpenBall OS · OpenBall Sunset 1.0 · Community project in development
+  </footer>
 </body>
 </html>
